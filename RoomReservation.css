@@ -1,0 +1,135 @@
+#RoomReservationBTN {
+  background-color: #ececec;
+}
+
+#PickDateHeader,
+.RoomNumber {
+  text-shadow: 2px 1px 2px rgb(0 0 0 / 30%);
+  width: 100%;
+  direction: rtl;
+  color: #ffffcc;
+  font-size: 38px;
+  font-family: assistant;
+  display: inline;
+  padding-left: 3px;
+  text-align: center;
+}
+
+#PickDateBTN {
+  background-color: transparent;
+  height: auto;
+  border-radius: 5px;
+  font-size: 32px;
+  padding-right: 3px;
+}
+
+#invalidDate {
+  color: red;
+  font-size: 26px;
+  font-style: assistant;
+  display: none;
+}
+
+.submitBTN {
+  background-color: #ffffcc;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: assistant;
+  font-size: 24px;
+  cursor: pointer;
+  color: #bdc3c7;
+  width: 30%;
+  padding: 2% 0px;
+  margin: 0 10%;
+}
+
+.OptionalRoom {
+  width: 30%;
+  text-align: center;
+  display: inline-block;
+  margin: 1%;
+}
+
+.Icons,
+.ReservationOption {
+  display: inline-block;
+}
+
+.IconImage {
+  max-width: 20%;
+  vertical-align: middle;
+  margin: 1vw;
+}
+
+.ReservationOption {
+  background-color: #ffffcc;
+  border-radius: 10px;
+  color: #bdc3c7;
+  margin: 1vw;
+  padding: 1vw;
+  font-size: 20px;
+}
+
+#OptionalRooms {
+  display: none;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  opacity: 0.5;
+  display: none;
+}
+
+#ReservationWindow {
+  display: none;
+  left: 40%;
+  top: 10%;
+  width: 20%;
+  position: fixed;
+  direction: rtl;
+  text-align: center;
+  background-color: white;
+}
+
+#ReservationWindowHeader {
+  background-color: rgb(68, 114, 196);
+  color: white;
+  font-size: 24px;
+  font-style: assistant;
+  padding: 1vw;
+  margin-bottom: 1.5vw;
+}
+
+.FormButtons {
+  background-color: rgb(68, 114, 196);
+  color: white;
+  font-size: 24px;
+  font-style: assistant;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 60%;
+}
+
+#invalidName,
+#invalidPhone,
+#invalidHour,
+#invalidDuration {
+  display: none;
+}
+
+@media screen and (max-width: 790px) {
+  #ReservationWindow {
+    left: 20%;
+    width: 60%;
+  }
+  .OptionalRoom {
+    width: 100%;
+  }
+}

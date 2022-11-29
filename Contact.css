@@ -1,0 +1,39 @@
+#ContactBTN {
+  background-color: #ececec;
+}
+#ContactInfo {
+  padding-top: 15%;
+  font-size: 36px;
+}
+
+#FormHeader {
+  text-align: center;
+  text-shadow: 2px 1px 2px rgb(0 0 0 / 30%);
+  width: 100%;
+  direction: rtl;
+  color: #ffffcc;
+  font-size: 38px;
+  font-family: assistant;
+}
+
+#ReasonForm {
+  height: 100px;
+  resize: none;
+}
+
+#submitBTN {
+  background-color: #ffffcc;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: assistant;
+  font-size: 24px;
+  cursor: pointer;
+  color: #bdc3c7;
+  width: 30%;
+  padding: 5px 0px;
+}
+
+#invalidName,
+#invalidEmail {
+  display: none;
+}
