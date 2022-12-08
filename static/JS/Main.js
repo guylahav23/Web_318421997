@@ -99,3 +99,17 @@ function ValidateReservation() {
     window.location.href = "Thanks.html";
   }
 }
+
+function PageLoad() {
+  var path2 = window.location.pathname;
+  var pageName = path2
+    .split("/")
+    .pop()
+    .substring(0, path2.split("/").pop().indexOf("."));
+  var btnName = pageName + "BTN";
+  var AElements = document.getElementsByClassName("MainMenuA");
+  for (var i = 0; i < AElements.length; i++) {
+    if (AElements.item(i).id == btnName)
+      AElements.item(i).classList.add("activeABTN");
+  }
+}

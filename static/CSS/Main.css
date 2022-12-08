@@ -1,0 +1,342 @@
+body {
+  margin: 0px;
+  background-color: #ececec;
+}
+
+.MainMenu {
+  width: 100%;
+  height: 150px;
+  direction: rtl;
+  background-color: #bdc3c7;
+}
+
+.MainMenuBTN {
+  text-shadow: 2px 1px 2px rgb(0 0 0 / 30%);
+  width: 24%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.MainMenuA {
+  font-size: 32px;
+  padding: 60px;
+  display: block;
+  font-family: assistant;
+  text-decoration: none;
+  color: #ffffcc;
+}
+
+.MainMenuA:hover {
+  transition: color 0.5s;
+  color: black;
+}
+
+.HeaderText {
+  direction: rtl;
+  text-shadow: 2px 2px 3px rgb(0, 0, 0);
+  width: 100%;
+  vertical-align: middle;
+  text-align: center;
+  color: #ffffcc;
+  position: absolute;
+  top: 35vh;
+  font-size: 52px;
+  font-family: assistant;
+}
+
+.BodyHeader {
+  text-shadow: 2px 1px 2px rgb(0 0 0 / 30%);
+  width: 100%;
+  text-align: right;
+  direction: rtl;
+  color: #ffffcc;
+  font-size: 38px;
+  font-family: assistant;
+}
+
+.ParagraphContainer {
+  padding: 2%;
+  direction: rtl;
+}
+
+.ParagraphContainer2 {
+  padding: 2%;
+  background-color: #bdc3c7;
+  direction: rtl;
+}
+
+.ParagraphContainer3 {
+  padding: 2%;
+  text-align: center;
+  direction: rtl;
+}
+
+.recommendationImg {
+  max-width: 10%;
+  border-radius: 50%;
+}
+
+.recommendationP {
+  max-width: 80%;
+  display: inline-block;
+  margin-right: 1vw;
+}
+
+.recommendation {
+  direction: rtl;
+  margin: 2vw;
+}
+
+.halfScreen {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.FormItem {
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: assistant;
+  font-size: 24px;
+  height: 40px;
+  width: 70%;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  padding-right: 1%;
+}
+
+.InvalidField {
+  color: red;
+  font-size: 26px;
+  font-style: assistant;
+}
+
+.activeABTN {
+  background-color: #ececec;
+}
+
+#ContactInfo {
+  padding-top: 15%;
+  font-size: 36px;
+}
+
+#FormHeader {
+  text-align: center;
+  text-shadow: 2px 1px 2px rgb(0 0 0 / 30%);
+  width: 100%;
+  direction: rtl;
+  color: #ffffcc;
+  font-size: 38px;
+  font-family: assistant;
+}
+
+#ReasonForm {
+  height: 100px;
+  resize: none;
+}
+
+#submitBTN {
+  background-color: #ffffcc;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: assistant;
+  font-size: 24px;
+  cursor: pointer;
+  color: #bdc3c7;
+  width: 30%;
+  padding: 5px 0px;
+}
+
+#invalidName,
+#invalidEmail {
+  display: none;
+}
+
+#PickDateHeader,
+.RoomNumber {
+  text-shadow: 2px 1px 2px rgb(0 0 0 / 30%);
+  width: 100%;
+  direction: rtl;
+  color: #ffffcc;
+  font-size: 38px;
+  font-family: assistant;
+  display: inline;
+  padding-left: 3px;
+  text-align: center;
+}
+
+#PickDateBTN {
+  background-color: transparent;
+  height: auto;
+  border-radius: 5px;
+  font-size: 32px;
+  padding-right: 3px;
+}
+
+#invalidDate {
+  color: red;
+  font-size: 26px;
+  font-style: assistant;
+  display: none;
+}
+
+.submitBTN {
+  background-color: #ffffcc;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: assistant;
+  font-size: 24px;
+  cursor: pointer;
+  color: #bdc3c7;
+  width: 30%;
+  padding: 2% 0px;
+  margin: 0 10%;
+}
+
+.OptionalRoom {
+  width: 30%;
+  text-align: center;
+  display: inline-block;
+  margin: 1%;
+}
+
+.Icons,
+.ReservationOption {
+  display: inline-block;
+}
+
+.IconImage {
+  max-width: 20%;
+  vertical-align: middle;
+  margin: 1vw;
+}
+
+.ReservationOption {
+  background-color: #ffffcc;
+  border-radius: 10px;
+  color: #bdc3c7;
+  margin: 1vw;
+  padding: 1vw;
+  font-size: 20px;
+}
+
+#OptionalRooms {
+  display: none;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  opacity: 0.5;
+  display: none;
+}
+
+#ReservationWindow {
+  display: none;
+  left: 40%;
+  top: 10%;
+  width: 20%;
+  position: fixed;
+  direction: rtl;
+  text-align: center;
+  background-color: white;
+}
+
+#ReservationWindowHeader {
+  background-color: rgb(68, 114, 196);
+  color: white;
+  font-size: 24px;
+  font-style: assistant;
+  padding: 1vw;
+  margin-bottom: 1.5vw;
+}
+
+.FormButtons {
+  background-color: rgb(68, 114, 196);
+  color: white;
+  font-size: 24px;
+  font-style: assistant;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 60%;
+}
+
+#invalidName,
+#invalidPhone,
+#invalidHour,
+#invalidDuration {
+  display: none;
+}
+
+#ThanksP {
+  text-align: center;
+  font-size: 38px;
+  text-shadow: 1px 1px 1px black;
+}
+
+form {
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
+
+p {
+  direction: rtl;
+  font-size: 28px;
+  color: black;
+  font-family: assistant;
+}
+
+h2 {
+  direction: rtl;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgb(0 0 0 / 30%);
+  font-size: 28px;
+  color: black;
+  font-family: assistant;
+}
+
+@media screen and (max-width: 790px) {
+  .MainMenuBTN {
+    display: block;
+    width: 100%;
+  }
+  .HeaderText {
+    position: static;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+  .MainMenu {
+    height: 100%;
+  }
+  .recommendationImg {
+    display: block;
+    max-width: 50%;
+    margin: auto;
+  }
+  .recommendationP {
+    max-width: 100%;
+  }
+  .halfScreen {
+    width: 100%;
+    display: block;
+  }
+
+  #ReservationWindow {
+    left: 20%;
+    width: 60%;
+  }
+  .OptionalRoom {
+    width: 100%;
+  }
+}
