@@ -1,10 +1,52 @@
+const { response } = require("express");
+
+//Page Load
+function PageLoad() {
+  var path2 = window.location.pathname;
+  var pageName = path2.replace("/", "");
+  var btnName = pageName + "BTN";
+  var AElements = document.getElementsByClassName("MainMenuA");
+  for (var i = 0; i < AElements.length; i++) {
+    if (AElements.item(i).id == btnName)
+      AElements.item(i).classList.add("activeABTN");
+  }
+}
+
 function ContactUs() {
-  ValidateContactForm();
+  if (ValidateContactForm() == true) {
+    var nameInput = document.getElementById("NameForm").value;
+    var PhoneInput = document.getElementById("PhoneForm").value;
+    var reasonInput = document.getElementById("ReasonForm").value;
+    fetch("./ContactToDB", {
+      method: "POST",
+      body: JSON.stringify({
+        Phone: PhoneInput,
+        Name: nameInput,
+        DateContact: new Date(),
+        hour:
+          new Date().getHours() +
+          ":" +
+          new Date().getMinutes() +
+          ":" +
+          new Date().getSeconds(),
+        Reason: reasonInput,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        alert(json.message);
+      });
+    document.location.href = "thanks";
+  }
 }
 
 function ValidateContactForm() {
   var nameInput = document.getElementById("NameForm").value;
-  var emailInput = document.getElementById("EmailForm").value;
+  var phoneInput = document.getElementById("PhoneForm").value;
   var reasonInput = document.getElementById("ReasonForm").value;
   var ret = false;
   var letters = /^[A-Za-z]+$/;
@@ -14,17 +56,17 @@ function ValidateContactForm() {
   } else {
     document.getElementById("invalidName").style.display = "none";
   }
-  var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (!emailInput.match(mailFormat)) {
-    document.getElementById("invalidEmail").style.display = "block";
+  var phoneFormat = /^[0-9]+$/;
+  if (!phoneInput.match(phoneFormat) || phoneInput.length != 10) {
+    document.getElementById("invalidPhone").style.display = "block";
     ret = true;
   } else {
-    document.getElementById("invalidEmail").style.display = "none";
+    document.getElementById("invalidPhone").style.display = "none";
   }
   if (ret) {
-    return;
+    return false;
   } else {
-    window.location.href = "Thanks.html";
+    return true;
   }
 }
 
@@ -39,15 +81,33 @@ function ValidateDate() {
   if (new Date(datePicked).getTime() < dateToday.getTime()) {
     // Invalid Date
     document.getElementById("invalidDate").style.display = "block";
-    document.getElementById("OptionalRooms").style.display = "none";
   } else {
     // Valid Date
     document.getElementById("invalidDate").style.display = "none";
-    document.getElementById("OptionalRooms").style.display = "block";
   }
 }
 
-function Reserve() {
+function Reserve(RoomID, D1) {
+  document
+    .getElementById("ReservationWindowHeader")
+    .setAttribute("name", "RoomIDForm");
+  document.getElementById("ReservationWindowHeader").innerHTML =
+    "הזמנת חדר " + RoomID;
+  document.getElementById("RoomIDForm").value = RoomID;
+  const MySelect = document.querySelector("select");
+  var ResOptions = document.getElementsByClassName("ReservationOption");
+  for (i = 10; i > 0; i--) {
+    MySelect.remove(i);
+  }
+  for (var i = 0; i < ResOptions.length; i++) {
+    if (ResOptions.item(i).getAttribute("name") == RoomID) {
+      let newOption = new Option(
+        ResOptions.item(i).textContent,
+        ResOptions.item(i).textContent
+      );
+      MySelect.add(newOption, undefined);
+    }
+  }
   document.getElementById("overlay").style.display = "block";
   document.getElementById("ReservationWindow").style.display = "block";
 }
@@ -58,14 +118,38 @@ function CancelReserve() {
 }
 
 function SubmitReservation() {
-  ValidateReservation();
+  if (ValidateReservation() == true) {
+    var nameInput = document.getElementById("NameForm").value;
+    var dateInput = document.getElementById("DateForm").value;
+    var RoomIDInput = document.getElementById("RoomIDForm").value;
+    var phoneInput = document.getElementById("PhoneForm").value;
+    var hourInput = document.getElementById("HourForm").value;
+    fetch("./MakeReservation", {
+      method: "POST",
+      body: JSON.stringify({
+        Phone: phoneInput,
+        Name: nameInput,
+        Hour: hourInput,
+        RoomID: RoomIDInput,
+        DateReserved: dateInput,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        alert(json.message);
+      });
+    document.location.href = "thanks";
+  }
 }
 
 function ValidateReservation() {
   var nameInput = document.getElementById("NameForm").value;
   var phoneInput = document.getElementById("PhoneForm").value;
   var hourInput = document.getElementById("HourForm").value;
-  var durationInput = document.getElementById("DurationForm").value;
   var ret = false;
   var letters = /^[A-Za-z]+$/;
   if (!nameInput.match(letters) || nameInput == "") {
@@ -87,29 +171,5 @@ function ValidateReservation() {
   } else {
     document.getElementById("invalidHour").style.display = "none";
   }
-  if (durationInput == "Wrong") {
-    document.getElementById("invalidDuration").style.display = "block";
-    ret = true;
-  } else {
-    document.getElementById("invalidDuration").style.display = "none";
-  }
-  if (ret) {
-    return;
-  } else {
-    window.location.href = "Thanks.html";
-  }
-}
-
-function PageLoad() {
-  var path2 = window.location.pathname;
-  var pageName = path2
-    .split("/")
-    .pop()
-    .substring(0, path2.split("/").pop().indexOf("."));
-  var btnName = pageName + "BTN";
-  var AElements = document.getElementsByClassName("MainMenuA");
-  for (var i = 0; i < AElements.length; i++) {
-    if (AElements.item(i).id == btnName)
-      AElements.item(i).classList.add("activeABTN");
-  }
+  return !ret;
 }

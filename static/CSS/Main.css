@@ -108,6 +108,32 @@ body {
   padding-right: 1%;
 }
 
+.SmallFormItem {
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: assistant;
+  font-size: 24px;
+  height: 40px;
+  width: 20%;
+  display: inline;
+  margin: auto;
+  margin-bottom: 20px;
+  padding-right: 1%;
+}
+
+.FormLabel {
+  background-color: transparent;
+  font-family: assistant;
+  font-size: 24px;
+  height: 40px;
+  width: 80%;
+  display: inline;
+  margin: auto;
+  margin-bottom: 20px;
+  padding-right: 1%;
+}
+
 .InvalidField {
   color: red;
   font-size: 26px;
@@ -123,7 +149,8 @@ body {
   font-size: 36px;
 }
 
-#FormHeader {
+#FormHeader,
+#NoResults {
   text-align: center;
   text-shadow: 2px 1px 2px rgb(0 0 0 / 30%);
   width: 100%;
@@ -197,10 +224,11 @@ body {
 }
 
 .OptionalRoom {
-  width: 30%;
+  width: 31%;
   text-align: center;
   display: inline-block;
   margin: 1%;
+  vertical-align: top;
 }
 
 .Icons,
@@ -241,7 +269,7 @@ body {
 #ReservationWindow {
   display: none;
   left: 40%;
-  top: 10%;
+  top: 5%;
   width: 20%;
   position: fixed;
   direction: rtl;

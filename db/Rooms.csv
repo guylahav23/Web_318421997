@@ -1,0 +1,5 @@
+﻿RoomID,MaxPersons,ContainsScreenSound,ContainsTable,Price
+0,4,1,1,150
+1,2,0,0,50
+2,7,1,1,250
+3,4,0,0,150

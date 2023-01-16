@@ -1,0 +1,71 @@
+doctype html
+head
+  link(rel='stylesheet' href='../CSS/Main.css')
+  script(defer='' src='../JS/Main.js')
+.MainMenu
+  .MainMenuBTN
+    a#HomePageBTN.MainMenuA(href='http://localhost:3000/HomePage') דף הבית
+  .MainMenuBTN
+    a#RoomReservationBTN.MainMenuA(href='http://localhost:3000/RoomReservation') הזמנת חדר
+  .MainMenuBTN
+    a#ContactBTN.MainMenuA(href='http://localhost:3000/Contact') צור קשר
+  .MainMenuBTN
+    a(href='http://localhost:3000/HomePage')
+      img(src='../images/ClinicMyMeetingLogo.png')
+.HeaderContainer
+  img(src='../images/MeetingRoom.png')
+  h1.HeaderText
+    | חדרים זמינים בתאריך #{D1}
+    #OptionalRooms.ParagraphContainer2
+each Room, index in Rooms
+    .OptionalRoom
+        img.RoomImage(src='../images/RoomFor' + Room.MaxPersons + '.jpg')
+        .RoomNumber
+            input#ReservationRoom1.submitBTN(type='button' value='הזמן חדר '+ Room.RoomID onclick='Reserve(' + Room.RoomID + ', ' + D1 + ')')
+        .Icons
+            if Room.ContainsScreenSound == 1
+                img.IconImage(src='../images/SoundIcon.png')
+            else 
+                img.IconImage(src='../images/MuteIcon.png')
+            img.IconImage(src='../images/WifiIcon.png')
+            img.IconImage(src='../images/' + Room.MaxPersons + 'PersonIcon.png')
+        .OptionalHours
+          if (!Room.CurrentReservations.includes('09:00'))
+            div(class ='ReservationOption' name = Room.RoomID) 09:00
+          if (!Room.CurrentReservations.includes('10:00'))
+            div(class ='ReservationOption' name = Room.RoomID) 10:00
+          if (!Room.CurrentReservations.includes('11:00'))
+            div(class ='ReservationOption' name = Room.RoomID) 11:00
+          if (!Room.CurrentReservations.includes('12:00'))
+            div(class ='ReservationOption' name = Room.RoomID) 12:00
+          if (!Room.CurrentReservations.includes('13:00'))
+            div(class ='ReservationOption' name = Room.RoomID) 13:00
+          if (!Room.CurrentReservations.includes('14:00'))
+            div(class ='ReservationOption' name = Room.RoomID) 14:00
+          if (!Room.CurrentReservations.includes('15:00'))
+            div(class ='ReservationOption' name = Room.RoomID) 15:00
+          if (!Room.CurrentReservations.includes('16:00'))
+            div(class ='ReservationOption' name = Room.RoomID) 16:00
+          if (!Room.CurrentReservations.includes('17:00'))
+            div(class ='ReservationOption' name = Room.RoomID) 17:00
+          
+if Rooms.length == 0
+    h2#NoResults אין חדרים זמינים! יש לבצע חיפוש חזור
+
+#overlay
+#ReservationWindow
+  form(method='get')
+    #ReservationWindowHeader
+    label.FormLabel תאריך הזמנה:
+    input#DateForm.FormItem(type = 'text' name='DateForm' value=D1 readonly)
+    label.FormLabel מספר חדר:
+    input#RoomIDForm.SmallFormItem(type = 'text' name='RoomIDForm' readonly)
+    #invalidName.InvalidField שם מורכב מאותיות באנגלית בלבד
+    input#NameForm.FormItem(type='text' placeholder='שם' name='NameForm')
+    #invalidPhone.InvalidField טלפון מורכב מ-10 ספרות
+    input#PhoneForm.FormItem(type='tel' placeholder='טלפון' name='PhoneForm')
+    #invalidHour.InvalidField יש לבחור שעת הזמנה
+    select#HourForm.FormItem(name='HourForm')
+      option(value='Wrong' disabled='' selected='') שעת הזמנה
+    input#submitReservation.FormButtons(type='button' onclick='SubmitReservation()' value='שלח')
+    input.FormButtons(type='button' onclick='CancelReserve()' value='חזור')

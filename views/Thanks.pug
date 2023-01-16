@@ -1,0 +1,21 @@
+doctype html
+head
+  link(rel='stylesheet' href='CSS/Main.css')
+  script(defer='' src='JS/Main.js')
+.MainMenu
+  .MainMenuBTN
+    a#HomePageBTN.MainMenuA(href='http://localhost:3000/HomePage') דף הבית
+  .MainMenuBTN
+    a#RoomReservationBTN.MainMenuA(href='http://localhost:3000/RoomReservation') הזמנת חדר
+  .MainMenuBTN
+    a#ContactBTN.MainMenuA(href='http://localhost:3000/Contact') צור קשר
+  .MainMenuBTN
+    a(href='http://localhost:3000/HomePage')
+      img(src='images/ClinicMyMeetingLogo.png')
+.HeaderContainer
+  img(src='images/MeetingRoom.png')
+  h1.HeaderText
+    | פרטיך התקבלו בהצלחה!
+.ParagraphContainer
+  p#ThanksP
+    | תודה שהשארת פרטים, נחזור אליך תוך 3 ימי עסקים למתן מענה לכל שאלה

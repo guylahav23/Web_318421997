@@ -1,0 +1,68 @@
+# Web_318421997
+
+Web course project
+
+התקנות:
+MySQL, Path, Express, Pug, body-parser, JSON
+
+מבחינת בסיס הנתונים:
+בסיס הנתונים מורכב מ-4 טבלאות שהן טבלת חדרים, טבלת לקוחות, טבלת הזמנות חדרים וטבלת יוצרי קשר.
+אתחול הנתונים נעשה באמצעות קריאה מקבצי CSV לפי הנתיבים שאצרף בהמשך.
+בסיס הנתונים הוגדר עם הנתונים שנשלחו אלינו (USER: root, PASSWORD: root, DATABASE: web)
+הנתונים הבסיסיים מביאים 4 חדרים שונים, 5 לקוחות שונים, 10 הזמנות חדרים שונות (כולם ב-28.2.2023) ושני אנשים שיצרו קשר בעבר (שהם לקוחות במערכת).
+
+נתיבים לאתחול הטבלאות (בסדר הזה):
+http://localhost:3000/CreateRooms
+http://localhost:3000/CreateCustomers
+http://localhost:3000/CreateRoomReservation
+http://localhost:3000/CreateContacts
+נתיבים למילוי הטבלאות בנתונים (בסדר הזה):
+http://localhost:3000/InsertRooms
+http://localhost:3000/InsertCustomers
+http://localhost:3000/InsertRoomReservation
+http://localhost:3000/InsertContacts
+(בשלב הזה ניתן לבצע את הבדיקות)
+נתיבים למחיקת הטבלאות (בסדר הזה):
+http://localhost:3000/DropContacts
+http://localhost:3000/DropRoomReservation
+http://localhost:3000/DropCustomers
+http://localhost:3000/DropRooms
+
+
+ה-syntax של יצירת הטבלאות:
+CREATE TABLE IF NOT EXISTS Rooms (
+    RoomID int,
+    MaxPersons int,
+    ContainsScreenSound boolean,
+    ContainsTable boolean,
+    Price int,
+    PRIMARY KEY (RoomID)
+);
+
+CREATE TABLE IF NOT EXISTS Customers (
+    Phone BigInt,
+    Name varchar(255),
+    ReservationCounter int,
+    PRIMARY KEY (Phone)
+);
+
+CREATE TABLE IF NOT EXISTS RoomReservation (
+    RoomID int,
+    Phone BigInt,
+    DateReserved Date,
+    hour varchar(5),
+    status varchar(10),
+    CONSTRAINT PK_RoomReservation PRIMARY KEY (RoomID,DateReserved,hour),
+    FOREIGN KEY FK_RoomReservation_RoomID (RoomID) REFERENCES Rooms(RoomID),
+    FOREIGN KEY FK_RoomReservation_Phone (Phone) REFERENCES Customers(Phone)
+);
+
+CREATE TABLE IF NOT EXISTS Contacts(
+    Phone BigInt,
+    Name varchar(255),
+    DateContact Date,
+    hour varchar(8),
+    Reason varchar(255),
+    CONSTRAINT PK_Contacts PRIMARY KEY (Phone,DateContact, hour),
+    FOREIGN KEY FK_Contacts_Phone (Phone) REFERENCES Customers(Phone)
+);

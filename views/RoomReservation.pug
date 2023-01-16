@@ -1,0 +1,26 @@
+doctype html
+head
+  link(rel='stylesheet' href='CSS/Main.css')
+  script(defer='' src='JS/Main.js')
+body(onload="PageLoad()")
+  .MainMenu
+    .MainMenuBTN
+      a#HomePageBTN.MainMenuA(href='http://localhost:3000/HomePage') דף הבית
+    .MainMenuBTN
+      a#RoomReservationBTN.MainMenuA(href='http://localhost:3000/RoomReservation') הזמנת חדר
+    .MainMenuBTN
+      a#ContactBTN.MainMenuA(href='http://localhost:3000/Contact') צור קשר
+    .MainMenuBTN
+      a(href='http://localhost:3000/HomePage')
+        img(src='images/ClinicMyMeetingLogo.png')
+  .HeaderContainer
+    img(src='images/MeetingRoom.png')
+    h1.HeaderText
+      | הזמנת חדר
+  .ParagraphContainer3
+    form(method='post' action = '/ShowAvailableRooms')
+      #invalidDate.InvalidField התאריך הנבחר חייב להיות החל ממחר
+      #PickDateHeader(name='PickDateHeader') בחר תאריך השכרה רצוי:
+      input#PickDateBTN(name='PickDateBTN' type='date' onchange='ShowOptionalReservations()')
+      br
+      input#submitBTN(type='submit' value = 'שלח')

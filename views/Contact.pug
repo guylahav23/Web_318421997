@@ -1,0 +1,40 @@
+doctype html
+head
+  link(rel='stylesheet' href='CSS/Main.css')
+  script(defer='' src='JS/Main.js')
+body(onload="PageLoad()")
+  .MainMenu
+    .MainMenuBTN
+      a#HomePageBTN.MainMenuA(href='http://localhost:3000/HomePage') דף הבית
+    .MainMenuBTN
+      a#RoomReservationBTN.MainMenuA(href='http://localhost:3000/RoomReservation') הזמנת חדר
+    .MainMenuBTN
+      a#ContactBTN.MainMenuA(href='http://localhost:3000/Contact') צור קשר
+    .MainMenuBTN
+      a(href='http://localhost:3000/HomePage')
+        img(src='images/ClinicMyMeetingLogo.png')
+  .HeaderContainer
+    img(src='images/MeetingRoom.png')
+    h1.HeaderText
+      | צור קשר
+  .ParagraphContainer
+    .halfScreen
+      h1#FormHeader
+        | לכל שאלה צרו איתנו קשר בטופס כאן
+      form#ContactForm(method='get')
+        #invalidName.InvalidField שם חייב להכיל אותיות באנגלית בלבד
+        input#NameForm.FormItem(type='text' name='NameForm' placeholder='שם')
+        #invalidPhone.InvalidField
+          | שדה הטלפון מכיל 10 ספרות
+        input#PhoneForm.FormItem(type='tel' placeholder='טלפון' name='PhoneForm')
+        textarea#ReasonForm.FormItem(name='ReasonForm' placeholder='סיבת הפניה')
+        input#submitBTN(type='button' value='שלח' onclick="ContactUs()")
+    .halfScreen
+      h2#ContactInfo
+        | כתובת: דיזינגוף 23, תל אביב
+        br
+        | טלפון: 03-5492345
+        br
+        | שעות פעילות: ימים ראשון עד חמישי
+        br
+        | 09:00-16:00
